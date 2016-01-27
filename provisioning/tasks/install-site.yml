@@ -18,12 +18,12 @@
     {{ drupal_site_install_extra_args | default([]) | join(" ") }}
     chdir={{ drupal_core_path }}
   notify: restart webserver
-  when: "'Successful' not in drupal_site_installed.stdout"
+  # when: "'Successful' not in drupal_site_installed.stdout"
   become: no
 
 - name: Install configured modules with drush.
   command: >
     {{ drush_path }} pm-enable -y {{ drupal_enable_modules | join(" ") }}
     chdir={{ drupal_core_path }}
-  when: "'Successful' not in drupal_site_installed.stdout"
+  # when: "'Successful' not in drupal_site_installed.stdout"
   become: no
